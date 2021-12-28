@@ -15,10 +15,10 @@ const findNew = ()=>{
    persons.create({name:'Souhail',age:23,favouriteFood:["Pizza","Spaghetti"]},{name:'Koussay',age:26,favouriteFood:["Mlewi"]},{name:'Chaima',age:22,favouriteFood:["Ma9loub"]})
 }
 //  findNew();
-const findPr = ({name:'Koussay'},(err,data) => {
-    err? console.log(err) : console.log(data);
-})
-// findPr();
+const findPr = () => {
+   persons.findOne({name:'Koussay'},(err,data)=>{err?console.log(err):console.log(data)})
+}
+//  findPr();
 const findOne=()=>{
     persons.findOne({favoriteFood:['Mlewy']},(err,data)=>{err?console.log(err):console.log(data)})
 }
@@ -47,12 +47,12 @@ const removePerson = ()=>{
 // removePerson();
 const ChainQuery=()=>{
     persons.find({favoriteFood:["Pizza"]})
-    .sort({name:1})
+    .sort({name:1 })
     .limit(2)
     .select("-age")
     .exec((err,data)=>{err?console.log(err):console.log(data)})
 }
-ChainQuery()
+// ChainQuery()
 app.listen(port,(err)=>{
     err ? console.log(err) : console.log(`server running on port ${port}`);
 })
